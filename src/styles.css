@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply flex;
+    @apply justify-center;
+    @apply items-center;
+    height: 100vh;
+
+    font-family: 'League Spartan', sans-serif;
+    background-color: #3b4664;
+}
