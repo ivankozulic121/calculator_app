@@ -42,70 +42,53 @@ const Button = ({text, className, fontStyle, bgColor, textColor, bShadow, handle
     <button style={{backgroundColor: bgColor ? bgColor :'rgb(234, 227, 219)',boxShadow: bShadow ? bShadow : '0px 3px 0px 0px gray', fontSize:fontStyle, color: textColor ? textColor : '#3d4450'}} className={`w-full h-14 rounded-xl text-3xl ${className}`} onClick={handleClick} value={text}>{text}</button>
   )
 }
+
 const App = () => {
+
+
+  const [output, setOutput] = useState('');
+  const [operationState, setOperationState] = useState('+');
+  const [operationClicked, setOperationClicked] = useState(false);
+  const [result, setResult] = useState(0);
+
+ 
   
-  const [count, setCount] = useState(0)
-  const [output, setOutput] = useState('')
-  const [operationState, setOperationState] = useState('')
-  const [result, setResult ] = useState(0)
-  console.log("RESULT: ", result);
-
-  let mystr = '';
-
-  if (mystr) console.log("TRUE!");
-  else console.log("FALSE!");
-  
-  console.log("STATE:",operationState);
-  console.log("OUTPUT",output)
-
-  const handleNumberClick = (event) => {
-
-    console.log("CLICKED: ",event.target.value,typeof(event.target.value));
-    
-  }
-
-  console.log(output);
-  
-
+  if( operationState === '=') {
+      setOutput(result);
+      setOperationState('')
+      setOperationClicked(false)
+  }    
     const handleClick = (event) => {
 
     if( Number(event.target.value) || Number(event.target.value) === 0 ) {
-      console.log("NUMBER: ",Number(event.target.value));
-      const value = Number(event.target.value);
       
-      setOutput(output.concat(event.target.value));
-
-      if( !operationState ) setResult( result + value );
       
+      if( operationClicked || !output ) {
+        setOutput((event.target.value))
+        setOperationClicked(false)
+      }
 
-       else  {
-
-          if( operationState === '+') setResult( result + value);
-
-          else if ( operationState === '-' ) setResult( result - value);
-          else if ( operationState === 'x')  setResult( result * value);
-
-          else setResult( result / value)
-          
-        }
-      console.log(result);
-
-  }
-
-    else if ( (event.target.value === '+' || event.target.value === '-' || event.target.value === '/' || event.target.value === 'x') && output ) setOutput('');
-    else if ( event.target.value === '=') setOutput(String(result));
-    else if (event.target.value === '.' && output) setOutput(output.concat(event.target.value))
-    else if ( event.target.value === 'DEL') setOutput(output.slice(0,output.length-1));
+      else setOutput(output.concat(event.target.value))
+}
+    else if ( (event.target.value === '+' || event.target.value === '-' || event.target.value === '/' || event.target.value === 'x' || event.target.value === '=') && output )
+    {
+      if ( operationState === '+') setResult( result + Number(output)) 
+      if ( operationState === '-') setResult( result - Number(output))
+      if ( operationState === 'x') setResult( result  * Number(output))
+      if ( operationState === '/') setResult( result / Number(output))
+      if ( operationState === '') setResult(Number(output));
+      
+      setOperationState(event.target.value);
+      setOperationClicked(true);
+      
     
-    else {
-      setOutput('');
-      setResult(0);
     }
   
+    else if (event.target.value === '.' && output) setOutput(output.concat(event.target.value))
+    else if ( event.target.value === 'DEL') setOutput(output.slice(0,output.length-1));
+    else setOutput('');    
 
 
-   
-   
 }
 
 
