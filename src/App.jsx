@@ -8,8 +8,20 @@ import './styles.css';
 const Output = ({output}) =>{
 
   return (
-    <div style={{backgroundColor:'rgb(24, 31, 50)'}} className="w-120 h-32 rounded-lg font-spartan text-right text-white text-6xl flex flex-row justify-end items-center pr-8">{output}</div>
+    <div style={{backgroundColor:'rgb(24, 31, 50)'}} className="w-120 h-32 rounded-lg font-spartan text-right text-white text-6xl flex flex-row justify-end items-center pr-8 mt-5">{output}</div>
   )
+}
+
+const Header = () => {
+  return (
+  <div className="text-base flex flex-row justify-between">
+    <p className="text-3xl">calc</p>
+  <div className="flex flew-row justify-between items-center">
+    <p className="text-xs">THEME</p>
+    <p>toggle</p>
+  
+  </div>
+  </div>)
 }
 
 const ButtonContainer = ({handleClick}) => {
@@ -94,6 +106,7 @@ const App = () => {
 
   return (
     <>
+   <Header/>
    <Output output={output}/>
    <ButtonContainer handleClick={handleClick}/>
    
