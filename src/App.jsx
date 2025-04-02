@@ -12,18 +12,52 @@ const Output = ({output}) =>{
   )
 }
 
+const Header = () => {
+    const [isOn, setIsOn] = useState(false);
+    return (
+        <div className="flex flex-row justify-between items-end">
+            <p>calc</p>
+            <div className="flex flex-row justify-end items-end gap-4">
+                <p>calc</p>
+                <div className="flex flex-col justify-end items-end">
+                    <div className="flex flex-row justify-between w-full">
+                        <p>1</p>
+                        <p>2</p>
+                        <p>3</p>
+                    </div>
+
+
+                    <div
+                        className="w-16 h-8 bg-gray-300 rounded-full p-1 cursor-pointer"
+                        onClick={() => setIsOn(!isOn)}
+                    >
+                        <div
+                            className={`w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-200 ${
+                                isOn ? 'transform translate-x-8' : ''
+                            }`}
+                        />
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    )
+}
 const ButtonContainer = ({handleClick}) => {
-  return (
-    <div style={{backgroundColor:'rgb(37, 45, 68)'}} className="w-120 h-120 mt-5 p-8 rounded-xl grid grid-cols-4 gap-6" >
-        <Button text="7" handleClick={handleClick}/>
-        <Button text="8" handleClick={handleClick}/>
-        <Button text="9" handleClick={handleClick}/>
-        <Button text="DEL" fontStyle='24px' textColor='white' bgColor='rgb(162, 179, 225)' bShadow= '0px 3px 0px 0px #3b4664' handleClick={handleClick}/>
-        <Button text="4" handleClick={handleClick}/>
-        <Button text="5" handleClick={handleClick}/>
-        <Button text="6" handleClick={handleClick}/>
-        <Button text="+" handleClick={handleClick}/>
-        <Button text="1" handleClick={handleClick}/>
+    return (
+        <div style={{backgroundColor: 'rgb(37, 45, 68)'}}
+             className="w-120 h-120 mt-5 p-8 rounded-xl grid grid-cols-4 gap-6">
+            <Button text="7" handleClick={handleClick}/>
+            <Button text="8" handleClick={handleClick}/>
+            <Button text="9" handleClick={handleClick}/>
+            <Button text="DEL" fontStyle='24px' textColor='white' bgColor='rgb(162, 179, 225)'
+                    bShadow='0px 3px 0px 0px #3b4664' handleClick={handleClick}/>
+            <Button text="4" handleClick={handleClick}/>
+            <Button text="5" handleClick={handleClick}/>
+            <Button text="6" handleClick={handleClick}/>
+            <Button text="+" handleClick={handleClick}/>
+            <Button text="1" handleClick={handleClick}/>
         <Button text="2" handleClick={handleClick}/>
         <Button text="3" handleClick={handleClick}/>
         <Button text="-" handleClick={handleClick}/>
@@ -50,6 +84,7 @@ const App = () => {
   const [operationState, setOperationState] = useState('+');
   const [operationClicked, setOperationClicked] = useState(false);
   const [result, setResult] = useState(0);
+  const [toggleState, setToggleState] = useState(0);
 
  
   
@@ -91,9 +126,16 @@ const App = () => {
 
 }
 
+  const handleToggleState = () => {
+
+      setToggleState(toggleState + 1);
+
+  }
+
 
   return (
     <>
+        <Header handleToggleState={handleToggleState} toggleState={toggleState} />
    <Output output={output}/>
    <ButtonContainer handleClick={handleClick}/>
    
