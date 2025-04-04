@@ -5,6 +5,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        background: "var(--background)",
+        textC: "var(--text-color)",
+        button: "var(--button-color)",
+        boxShadow:"var(--box-shadow)",
+        toggle:"var(--toggle)",
+        body:"var(--body-color)",
+        header:"var(--header-color)",
+        buttonContainer:"var(--button-container-color)",
+      },
       width:{
         '500':'125rem',
         '120':'30rem'

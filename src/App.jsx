@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import './index.css';
 import './styles.css';
+import { useTheme } from './contexts/ThemeContext';
 
 const Output = ({output}) =>{
 
@@ -12,20 +13,20 @@ const Output = ({output}) =>{
   )
 }
 
-const Header = ({handleToggleClick, toggleState}) => {
+const Header = ({handleToggleClick, theme}) => {
     
 
     //const handleToggleClick = () => {
       //setToggleState(toggleState+1)
     //}
-    const togglePosition = 
-    toggleState === 0 ? 'after:translate-x-0' : 
-    toggleState === 1 ? 'after:translate-x-1/2' : 
-    'after:translate-x-full';
-
+    //const togglePosition =
+    //toggleState === 0 ? 'after:translate-x-0' :
+    //toggleState === 1 ? 'after:translate-x-1/2' :
+    //'after:translate-x-full';
+    //((const { theme, setTheme } = useTheme();
     return (
         <div className="flex flex-row justify-between items-end">
-            <p>calc</p>
+            <p className="text-textC">calc</p>
             <div className="flex flex-row justify-end items-end gap-4">
                 <p>calc</p>
                 <div className="flex flex-col justify-end items-end">
@@ -38,7 +39,7 @@ const Header = ({handleToggleClick, toggleState}) => {
                     
                     <label className="inline-flex items-center cursor-pointer" >
           <input type="checkbox" value="" className="sr-only peer" ></input>
-          <div className={`relative w-14 h-5 bg-slate-800   dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 ${toggleState === 0 ? "after:translate-x-0" : toggleState === 1 ? "after:translate-x-[18px]" : "after:translate-x-[36px]"}  peer-checked:after:border-white after:content-[""] after:absolute after:top-[4px] after:start-[4px] after:bg-red-800 after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600`} onClick={handleToggleClick}></div>
+          <div className={`relative w-14 h-5 bg-slate-800   dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 ${theme === 'first' ? "after:translate-x-0" : theme === 'second' ? "after:translate-x-[18px]" : "after:translate-x-[36px]"}  peer-checked:after:border-white after:content-[""] after:absolute after:top-[4px] after:start-[4px] after:bg-red-800 after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600`} onClick={handleToggleClick}></div>
         </label>
 
 
@@ -90,13 +91,21 @@ const App = () => {
   const [operationState, setOperationState] = useState('+');
   const [operationClicked, setOperationClicked] = useState(false);
   const [result, setResult] = useState(0);
-  const [toggleState, setToggleState] = useState(0);
+  //const [toggleState, setToggleState] = useState(0);
+
+  const {theme, setTheme} = useTheme();
+
+  //if(toggleState === 0) setTheme('first')
+  //if(toggleState ===1) setTheme('second')
+  //if(toggleState === 2) setTheme('third')
+
+
+
 
   const handleToggleClick = () => {
-    if (toggleState === 2) setToggleState(0)
-    else
-    setToggleState(toggleState+1)
-    console.log("STATE: "+ toggleState)
+    if (theme === 'first') setTheme('second')
+    if( theme === 'second') setTheme('third')
+      if( theme === 'third') setTheme('first')
   }
  
   
@@ -142,7 +151,7 @@ const App = () => {
 
   return (
     <>
-        <Header handleToggleClick={handleToggleClick} toggleState={toggleState} />
+        <Header handleToggleClick={handleToggleClick} theme={theme} />
    <Output output={output}/>
    <ButtonContainer handleClick={handleClick}/>
    
