@@ -9,7 +9,7 @@ import { useTheme } from './contexts/ThemeContext';
 const Output = ({output}) =>{
 
   return (
-    <div style={{backgroundColor:'rgb(24, 31, 50)'}} className="w-120 h-32 rounded-lg font-spartan text-right text-white text-6xl flex flex-row justify-end items-center pr-8 mt-5">{output}</div>
+    <div className="w-120 h-32 rounded-lg font-spartan text-right bg-output text-6xl text-outputText flex flex-row justify-end items-center pr-8 mt-5">{output}</div>
   )
 }
 
@@ -26,20 +26,20 @@ const Header = ({handleToggleClick, theme}) => {
     //((const { theme, setTheme } = useTheme();
     return (
         <div className="flex flex-row justify-between items-end">
-            <p className="text-textC">calc</p>
+            <p className="text-outColor text-3xl">calc</p>
             <div className="flex flex-row justify-end items-end gap-4">
-                <p>calc</p>
+                <p className="text-xs text-outColor">THEME</p>
                 <div className="flex flex-col justify-end items-end">
-                    <div className="flex flex-row justify-between w-full">
-                        <p>1</p>
-                        <p>2</p>
-                        <p>3</p>
+                    <div className="pl-2 pr-2 flex flex-row justify-between w-full">
+                        <p className="text-outColor font-mediun">1</p>
+                        <p className="text-outColor font-medium">2</p>
+                        <p className="text-outColor font-medium">3</p>
                     </div>
                     
                     
-                    <label className="inline-flex items-center cursor-pointer" >
+                    <label className="flex flex-col items-center cursor-pointer" >
           <input type="checkbox" value="" className="sr-only peer" ></input>
-          <div className={`relative w-14 h-5 bg-slate-800   dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 ${theme === 'first' ? "after:translate-x-0" : theme === 'second' ? "after:translate-x-[18px]" : "after:translate-x-[36px]"}  peer-checked:after:border-white after:content-[""] after:absolute after:top-[4px] after:start-[4px] after:bg-red-800 after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600`} onClick={handleToggleClick}></div>
+          <div className={`relative min-w-[68px] h-6 bg-buttonContainer overflow-visible   dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 ${theme === 'first' ? "after:translate-x-0" : theme === 'second' ? "after:translate-x-[20px]" : "after:translate-x-[40px]"}  peer-checked:after:border-white after:content-[""] after:absolute after:top-[4px] after:start-[4px] after:bg-button_equal after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600`} onClick={handleToggleClick}></div>
         </label>
 
 
@@ -53,34 +53,33 @@ const Header = ({handleToggleClick, theme}) => {
 }
 const ButtonContainer = ({handleClick}) => {
     return (
-        <div style={{backgroundColor: 'rgb(37, 45, 68)'}}
-             className="w-120 h-120 mt-5 p-8 rounded-xl grid grid-cols-4 gap-6">
-            <Button text="7" handleClick={handleClick}/>
-            <Button text="8" handleClick={handleClick}/>
-            <Button text="9" handleClick={handleClick}/>
-            <Button text="DEL" fontStyle='24px' textColor='white' bgColor='rgb(162, 179, 225)'
+        <div className="w-120 h-120 mt-5 p-8 rounded-xl bg-buttonContainer grid grid-cols-4 gap-6">
+            <Button className="bg-button_num text-buttonColorGroupOne shadow-number" text="7" handleClick={handleClick}/>
+            <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="8" handleClick={handleClick}/>
+            <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="9" handleClick={handleClick}/>
+            <Button className="bg-button_text text-buttonColorGroupTwo shadow-text" text="DEL" fontStyle='24px' textColor='white' bgColor='rgb(162, 179, 225)'
                     bShadow='0px 3px 0px 0px #3b4664' handleClick={handleClick}/>
-            <Button text="4" handleClick={handleClick}/>
-            <Button text="5" handleClick={handleClick}/>
-            <Button text="6" handleClick={handleClick}/>
-            <Button text="+" handleClick={handleClick}/>
-            <Button text="1" handleClick={handleClick}/>
-        <Button text="2" handleClick={handleClick}/>
-        <Button text="3" handleClick={handleClick}/>
-        <Button text="-" handleClick={handleClick}/>
-        <Button text="." handleClick={handleClick}/>
-        <Button text="0" handleClick={handleClick}/>
-        <Button text="/" handleClick={handleClick}/>
-        <Button text="x" handleClick={handleClick}/>
-        <Button className="col-span-2" text="RESET" fontStyle='24px' bgColor='rgb(162, 179, 225)' textColor='white' bShadow= '0px 3px 0px 0px #3b4664' handleClick={handleClick}/>
-        <Button className="col-span-2" text="=" fontStyle='30px' bgColor ='rgb(249, 108, 91)' textColor='white' bShadow=' 0px 3px 0px 0px rgb(144, 35, 23)' handleClick={handleClick}/>
+            <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="4" handleClick={handleClick}/>
+            <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="5" handleClick={handleClick}/>
+            <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="6" handleClick={handleClick}/>
+            <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="+" handleClick={handleClick}/>
+            <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="1" handleClick={handleClick}/>
+        <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="2" handleClick={handleClick}/>
+        <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="3" handleClick={handleClick}/>
+        <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="-" handleClick={handleClick}/>
+        <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="." handleClick={handleClick}/>
+        <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="0" handleClick={handleClick}/>
+        <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="/" handleClick={handleClick}/>
+        <Button className="bg-button_num text-buttonColorGroupOne  shadow-number" text="x" handleClick={handleClick}/>
+        <Button className="col-span-2 bg-button_text text-buttonColorGroupTwo shadow-text" text="RESET" fontStyle='24px' bgColor='rgb(162, 179, 225)'   handleClick={handleClick}/>
+        <Button className="col-span-2 bg-button_equal text-buttonColorGroupThree shadow-equal" text="=" fontStyle='30px' bgColor ='rgb(249, 108, 91)' handleClick={handleClick}/>
     </div>
   )
 }
 
 const Button = ({text, className, fontStyle, bgColor, textColor, bShadow, handleClick}) => {
   return (
-    <button style={{backgroundColor: bgColor ? bgColor :'rgb(234, 227, 219)',boxShadow: bShadow ? bShadow : '0px 3px 0px 0px gray', fontSize:fontStyle, color: textColor ? textColor : '#3d4450'}} className={`w-full h-14 rounded-xl text-3xl ${className}`} onClick={handleClick} value={text}>{text}</button>
+    <button style={{fontSize:fontStyle}} className={`w-full h-14 rounded-xl text-3xl ${className}`} onClick={handleClick} value={text}>{text}</button>
   )
 }
 
@@ -150,10 +149,11 @@ const App = () => {
 
 
   return (
-    <>
+    <>  
         <Header handleToggleClick={handleToggleClick} theme={theme} />
    <Output output={output}/>
    <ButtonContainer handleClick={handleClick}/>
+   
    
    </>
   )

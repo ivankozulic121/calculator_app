@@ -10,12 +10,28 @@ module.exports = {
         secondary: "var(--secondary)",
         background: "var(--background)",
         textC: "var(--text-color)",
-        button: "var(--button-color)",
+        output: "var(--output)",
+        outputBg: "var(--output--bg)",
+        outputText: "var(--output-text)",
+        button_num: "var(--button-num-color)",
+        button_text:"var(--button-text-color)",
+        button_equal:"var(--button-equal)",
         boxShadow:"var(--box-shadow)",
         toggle:"var(--toggle)",
         body:"var(--body-color)",
         header:"var(--header-color)",
-        buttonContainer:"var(--button-container-color)",
+        buttonContainer:"var(--button-container)",
+        buttonColorGroupOne: "var(--button-color-group-one)",
+        buttonColorGroupTwo: "var(--button-color-group-two)",
+        buttonColorGroupThree: "var(--button-color-group-three)",
+        outColor:"var(--out-color)"
+        
+      
+      },
+      boxShadow:{
+        'text': 'var(--box-shadow-text)',
+        'number': 'var(--box-shadow-number)',
+        'equal': 'var(--box-shadow-equal)'
       },
       width:{
         '500':'125rem',

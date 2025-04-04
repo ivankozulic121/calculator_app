@@ -6,8 +6,9 @@ body{
     @apply flex;
     @apply justify-center;
     @apply items-center;
+    @apply font-bold;
     height: 100vh;
 
     font-family: 'League Spartan', sans-serif;
-    background-color: #3b4664;
+    background-color: var(--body-color)
 }
